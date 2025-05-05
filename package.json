@@ -1,0 +1,12 @@
+{
+    "name": "beingcogni",
+    "version": "1.0.0",
+    "description": "Static portfolio site",
+    "scripts": {
+      "start": "serve ."
+    },
+    "dependencies": {
+      "serve": "^14.2.0"
+    }
+  }
+  
