@@ -1,14 +1,14 @@
 
 let socket;
 
-    print( window.location.host)
+console.log( window.location.host)
 
 
 if (window.location.host.split(":")[0] === "localhost") {
     socket = new WebSocket("ws://localhost:8080");
     console.log("WebSocket connection established to localhost");
 } else {
-    print( window.location.host)
+    console.log( window.location.host)
     const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
     const host = window.location.host;
     socket = new WebSocket(`${proto}://${host}/ws`);
