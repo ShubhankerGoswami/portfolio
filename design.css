@@ -67,3 +67,72 @@ html, body {
     opacity: 1;
     transform: translateX(0); /* Move to the final position */
 }
+
+
+
+.messagesdiv {
+
+  display: flex;
+  width: 100%;
+
+
+}
+
+
+.bemessage {
+
+  max-width: 100%;
+
+  display: flex;
+  
+  justify-content: flex-start;
+
+  align-items: center;
+
+  background-color: purple;
+
+  color: white;
+  font-size: 0.85rem;
+  border-radius: 10px;
+
+  padding: 5px;
+
+  line-break: auto;
+
+  word-wrap: break-word;
+
+  line-height: 1.6;
+
+
+}
+
+.usermessage {
+
+  max-width: 100%;
+
+  display: flex;
+  
+  justify-content: flex-start;
+
+  align-items: center;
+
+  background-color: white;
+
+  color: black;
+
+  font-size: 0.85rem;
+  border-radius: 10px;
+
+  border: 1px solid black;
+
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+
+  padding: 5px;
+
+  line-break: auto;
+
+  word-wrap: break-word;
+
+  line-height: 1.6;
+
+}

@@ -13,3 +13,6 @@ window.onload = function() {
             document.querySelector('.transitionright').classList.add('show');
         }, 100); // You can adjust the timeout delay as needed
     };
+
+
+
