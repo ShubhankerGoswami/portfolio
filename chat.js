@@ -5,7 +5,10 @@ if (window.location.host.split(":")[0] === "localhost") {
     socket = new WebSocket("ws://localhost:8080");
     console.log("WebSocket connection established to localhost");
 } else {
-    socket = new WebSocket(`${protocol}://${window.location.host}`);
+    const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const host = window.location.host;
+    socket = new WebSocket(`${proto}://${host}/ws`);
+    console.log("WebSocket connection established to production server");
 }
 
 document.getElementById("closepopup1").addEventListener("click", function close() {
