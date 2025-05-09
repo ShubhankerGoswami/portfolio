@@ -11,7 +11,7 @@ if (window.location.host.split(":")[0] === "localhost") {
     console.log( window.location.host)
     const proto = window.location.protocol === 'https:' ? 'wss' : 'ws';
     const host = window.location.host;
-    socket = new WebSocket('wss://portfolio-9gah.onrender.com/ws');
+    socket = new WebSocket('wss://portfolio.beingcogni.com/ws');
     console.log("WebSocket connection established to production server");
 }
 
