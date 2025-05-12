@@ -10,135 +10,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="design.css">
+    <style>
+        #loader {
+            position: fixed;
+            z-index: 9999;
+            background-color: #ffffff;
+            /* Change as needed */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+    </style>
 </head>
 
-<body>
-    <div
-        style="display: flex; align-items: center; justify-content: space-evenly; width: 100%;padding-left: 3rem;padding-right: 3rem;">
-        <div style="width: 15%; display: flex; justify-content: start; align-items: center;">
-            <img src="/img/Favicon.png" style="height: 60px; width: 60px;">
-        </div>
-        <div style="padding-left: 1rem; padding-right: 1rem;width: 70%; ">
-            <div class="navbar" style="display: flex;justify-content: space-around;align-items: center;gap: 2rem;width: 100%;">
-                <a href="/" class="font menubutton">Home</a>
-                <a href="/Profile" class="font menubutton">Profile</a>
-                <a href="/Projects" class="font menubutton">Projects</a>
-                <a href="/WorkSamples" class="font menubutton">Work Samples</a>
-                <a href="/Resume" class="font menubutton">Resume</a>
-                <a href="/Contacts" class="font menubutton">Contacts</a>
+<body class="loading">
+    <div id="loader">
+        <img src="/img/animated_logo.gif" alt="Loading..." />
+    </div>
 
-
+    <div id="main-content" style="display: none;">
+        <div
+            style="display: flex; align-items: center; justify-content: space-evenly; width: 100%;padding-left: 3rem;padding-right: 3rem;">
+            <div style="width: 15%; display: flex; justify-content: start; align-items: center;">
+                <a href="/"><img src="/img/Favicon.png" style="height: 60px; width: 60px;"></a>
             </div>
-        </div>
-
-        <div style="width: 15%; display: flex; justify-content: end; align-items: center;gap: 20px;">
-            <div>
-                <a href="https://www.linkedin.com/in/shubhankergoswami/" target="_blank">
-                    <img style="height: 25px; width: 25px;" src="/img/icons8-linkedin-48.png">
-                </a>
-            </div>
-            <div>
-                <a href="https://wa.me/918527534288" target="_blank">
-                    <img style="height: 25px; width: 25px;" src="/img/icons8-whatsapp-48.png">
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div style="height: 60px;width: 100vw;">
-
-    </div>
-
-    <div style="display: flex; flex-wrap: wrap; width: 100%; padding-left: 2rem;padding-right: 3rem; gap: 3rem;">
-
-        <!-- Text Section -->
-        <div class="transitionleft"
-            style="flex: 1 1 400px; display: flex; flex-direction: column; justify-content: start; gap: 1rem;">
-
-            <p
-                style="font-size: clamp(1.5rem, 4vw, 3rem); background: linear-gradient(135deg, #9D50BB, purple); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; margin: 0;">
-                Innovate, Execute, Repeat
-            </p>
-
-            <p style="font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.6;">
-                Yup, that’s what defines me. I am <b>Shubhanker Goswami</b>,<span><img style="height: 2rem;width: 2rem;"
-                        src="/img/working.png"></span> a results-driven <b>Product Manager</b> with experience
-                delivering AI-powered and large-scale web platforms from 0 to 1. Proven track record leading
-                cross-functional teams and building both client-based and in-house products across domains like
-                <b>Generative AI, SaaS, AI - Agents, and EdTech</b>. Skilled in product strategy, roadmap execution,
-                user research, and GTM planning. Adept at translating business goals and market insights into scalable,
-                user-centric solutions that drive adoption and growth.
-            </p>
-
-        </div>
-
-        <!-- Image Section -->
-        <div class="transitionright"
-            style="flex: 1 1 300px; display: flex; align-items: center; justify-content: center;">
-            <img src="/img/illutrator.png" style="width: 100%; height: auto; max-width: 400px; object-fit: contain;">
-        </div>
-    </div>
-    <div style="height: 60px;width: 100vw;"></div>
-
-    <div style=" background-color: #85fbd7;height: 30px; width: 100%;">
-
-    </div>
+            <div style="padding-left: 1rem; padding-right: 1rem;width: 70%; ">
+                <div class="navbar"
+                    style="display: flex;justify-content: space-around;align-items: center;gap: 2rem;width: 100%;">
+                    <a href="/" class="font menubutton">Home</a>
+                    <a href="/Profile" class="font menubutton">Profile</a>
+                    <a href="/Projects" class="font menubutton">Projects</a>
+                    <a href="/WorkSamples" class="font menubutton">Work Samples</a>
+                    <a href="/Resume" class="font menubutton">Resume</a>
+                    <a href="/Contacts" class="font menubutton">Contacts</a>
+                    <a href="/Consulting" class="font menubutton">Consulting</a>
 
 
-
-    <div class="chatbot" style="position: fixed;bottom: 136px;right:174px;z-index: 1000;background-color: violet;">
-        <div id="closepopup1" style=" display: block; position: absolute;top: 1px;left: 141px;cursor: pointer;"><img
-                src="/img/Close.png" style="height: 12px;width: 12px;"></div>
-        <div id="message1"
-            style=" display: block; position: absolute; border: 1px solid purple; border-radius: 5px;box-shadow: 1px 1px 1px black;top: 19px;left: 5px;padding: 5px;max-width: 200px;width: 150px; background-color: white;">
-            <p class="font" style="font-size: clamp(0.5rem, 1vw, 1rem);margin: 0px;">Hey &#x1F44B; I am Shubhanker's AI
-                Assistant. May be I can help you in your Queries. Wanna try?</p>
-        </div>
-        <div id="messagearea"
-            style="display: none; flex-direction: column; position: absolute;top: -216px;left: -251px;width: 400px;height: 300px; background-color: white; border-radius: 5px;box-shadow: 1px 1px 10px -5px black;">
-            <div
-                style="display: flex;justify-content: space-between; align-items: center;width: 100%;padding: 5px; background-color: rgba(230, 231, 238, 1);border-top-right-radius: 5px;border-top-left-radius: 5px;border: 1px solid black;height: 31px">
-                <div><img src="/img/AI logo.png" style="height: 16px;width: 16px;"><span class="font"> Messages</span>
                 </div>
-                <div id="closepopup2" style="cursor: pointer;"><img src="/img/Close.png"
-                        style="height: 12px;width: 12px; object-fit: contain;"></div>
             </div>
-            <div id="messages"
-                style="display: flex;flex-direction: column;padding: 5px;overflow-y: auto;width: 100%;height : 70%;gap: 5px;">
 
-                <div id="messagesdiv">
-                    <div class="bemessage">Hey &#x1F44B; I am Shubhanker's AI Assistant. May be I can help you in
-                        your Queries. Wanna try?</div>
+            <div style="width: 15%; display: flex; justify-content: end; align-items: center;gap: 20px;">
+                <div>
+                    <a href="https://www.linkedin.com/in/shubhankergoswami/" target="_blank">
+                        <img style="height: 25px; width: 25px;" src="/img/icons8-linkedin-48.png">
+                    </a>
+                </div>
+                <div>
+                    <a href="https://wa.me/918527534288" target="_blank">
+                        <img style="height: 25px; width: 25px;" src="/img/icons8-whatsapp-48.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 60px;width: 100vw;">
+
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; width: 100%; padding-left: 2rem;padding-right: 3rem; gap: 3rem;">
+
+            <!-- Text Section -->
+            <div class="transitionleft"
+                style="flex: 1 1 400px; display: flex; flex-direction: column; justify-content: start; gap: 1rem;">
+
+                <p
+                    style="font-size: clamp(1.5rem, 4vw, 3rem); background: linear-gradient(135deg, purple, black   ); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; margin: 0;">
+                    Innovate, Execute, Repeat
+                </p>
+
+                <p style="font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.6;">
+                    Yup, that’s what defines me. I am <b>Shubhanker Goswami</b>,<span><img
+                            style="height: 2rem;width: 2rem;" src="/img/working.png"></span> a results-driven <b>Product
+                        Manager</b> with experience
+                    delivering AI-powered and large-scale web platforms from 0 to 1. Proven track record leading
+                    cross-functional teams and building both client-based and in-house products across domains like
+                    <b>Generative AI, SaaS, AI - Agents, and EdTech</b>. Skilled in product strategy, roadmap execution,
+                    user research, and GTM planning. Adept at translating business goals and market insights into
+                    scalable,
+                    user-centric solutions that drive adoption and growth.
+                </p>
+
+            </div>
+
+            <!-- Image Section -->
+            <div class="transitionright"
+                style="flex: 1 1 300px; display: flex; align-items: center; justify-content: center;">
+                <img src="/img/illutrator.png"
+                    style="width: 100%; height: auto; max-width: 400px; object-fit: contain;">
+            </div>
+        </div>
+        <div style="height: 60px;width: 100vw;"></div>
+
+        <div
+            style=" display: flex;flex-direction: column; background-color: #F5EBF7;height: fit-content; width: 100%;padding-left: 3rem;padding-right: 3rem;">
+
+            <div style="width: 100%; display: flex;justify-content: center;">
+                <h1 class="font"
+                    style="font-size: 25px; background: linear-gradient(135deg, purple, black); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Work Samples</h1>
+            </div>
+
+            <div class="scroll-container">
+
+                <div class="section" style="display: flex;justify-content: center;align-items: center;gap: 2rem;">
+                    <div>
+                        <div>
+                            <h1 class="font"> Product Requirement Documents</h1>
+                        </div>
+                    </div>
+                    <div
+                        style="box-shadow: 1px 1px 19px -5px; height: fit-content;width: fit-content;border-radius: 5px;">
+                        <video width="320" height="240" controls autoplay muted poster="/img/Blinking squares.gif">
+                            <source src="/img/PRD.mp4" type="video/mp4">Your browser does not support the video tag.
+                        </video> </div>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+        <!-- Chat Section-->
+
+
+        <div class="chatbot" style="position: fixed;bottom: 136px;right:174px;z-index: 1000;background-color: violet;">
+            <div id="closepopup1" style=" display: block; position: absolute;top: 1px;left: 141px;cursor: pointer;"><img
+                    src="/img/Close.png" style="height: 12px;width: 12px;"></div>
+            <div id="message1"
+                style=" display: block; position: absolute; border: 1px solid purple; border-radius: 5px;box-shadow: 1px 1px 1px black;top: 19px;left: 5px;padding: 5px;max-width: 200px;width: 150px; background-color: white;">
+                <p class="font" style="font-size: clamp(0.5rem, 1vw, 1rem);margin: 0px;">Hey &#x1F44B; I am Shubhanker's
+                    AI
+                    Assistant. May be I can help you in your Queries. Wanna try?</p>
+            </div>
+            <div id="messagearea"
+                style="display: none; flex-direction: column; position: absolute;top: -216px;left: -251px;width: 400px;height: 300px; background-color: white; border-radius: 5px;box-shadow: 1px 1px 10px -5px black;">
+                <div
+                    style="display: flex;justify-content: space-between; align-items: center;width: 100%;padding: 5px; background-color: rgba(230, 231, 238, 1);border-top-right-radius: 5px;border-top-left-radius: 5px;border: 1px solid black;height: 31px">
+                    <div><img src="/img/AI logo.png" style="height: 16px;width: 16px;"><span class="font">
+                            Messages</span>
+                    </div>
+                    <div id="closepopup2" style="cursor: pointer;"><img src="/img/Close.png"
+                            style="height: 12px;width: 12px; object-fit: contain;"></div>
+                </div>
+                <div id="messages"
+                    style="display: flex;flex-direction: column;padding: 5px;overflow-y: auto;width: 100%;height : 70%;gap: 5px;">
+
+                    <div id="messagesdiv">
+                        <div class="bemessage">Hey &#x1F44B; I am Shubhanker's AI Assistant. May be I can help you in
+                            your Queries. Wanna try?</div>
+                    </div>
+
+
+
+
                 </div>
 
 
+                <div
+                    style="height: 30%;width: 100%;display: flex;justify-content: center;align-items: center;padding: 2px;">
+
+                    <div style="height: 100%;width: 90%;"><textarea style="width: 100%; height: 100%;" id="inputmessage"
+                            placeholder="Enter your Messaage"></textarea></div>
+                    <div style="height: 100%;width: 10%;display: flex;justify-content: center;align-items: center;">
+                        <button id="send" style="all: unset;cursor: pointer;"><img src="/img/send message.png"
+                                style="height: 16px;width: 16px;object-fit: contain;"></button> </div>
+
+
+                </div>
 
 
             </div>
-
-
-            <div
-                style="height: 30%;width: 100%;display: flex;justify-content: center;align-items: center;padding: 2px;">
-
-                <div style="height: 100%;width: 90%;"><textarea style="width: 100%; height: 100%;" id="inputmessage"
-                        placeholder="Enter your Messaage"></textarea></div>
-                <div style="height: 100%;width: 10%;display: flex;justify-content: center;align-items: center;"><button
-                        id="send" style="all: unset;cursor: pointer;"><img src="/img/send message.png"
-                            style="height: 16px;width: 16px;object-fit: contain;"></button> </div>
-
-
+            <div id="startchat" style="position: absolute;top: 82px;left: 116px;cursor: pointer;">
+                <img src="/img/Chat-image.png" style="width: 40px;height: 40px;object-fit: contain;">
             </div>
 
-
-        </div>
-        <div id="startchat" style="position: absolute;top: 82px;left: 116px;cursor: pointer;">
-            <img src="/img/Chat-image.png" style="width: 40px;height: 40px;object-fit: contain;">
         </div>
 
     </div>
-
-
-
+      <script>
+    window.addEventListener('load', function () {
+      const loader = document.getElementById('loader');
+      const content = document.getElementById('main-content');
+      loader.style.display = 'none';
+      content.style.display = 'block';
+      document.body.classList.remove('loading');
+    });
+  </script>
 
     <script src="chat.js"></script>
 
