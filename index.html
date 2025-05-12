@@ -41,8 +41,7 @@
                 <a href="/"><img src="/img/Favicon.png" style="height: 60px; width: 60px;"></a>
             </div>
             <div style="padding-left: 1rem; padding-right: 1rem;width: 70%; ">
-                <div class="navbar"
-                    style="display: flex;justify-content: space-around;align-items: center;gap: 2rem;width: 100%;">
+                <div class="navbar">
                     <a href="/" class="font menubutton">Home</a>
                     <a href="/Profile" class="font menubutton">Profile</a>
                     <a href="/Projects" class="font menubutton">Projects</a>
@@ -118,17 +117,33 @@
 
             <div class="scroll-container">
 
-                <div class="section" style="display: flex;justify-content: center;align-items: center;gap: 2rem;">
-                    <div>
+                <div class="section content-block">
+                    <div style="display: flex;justify-content: flex-start;align-items: center;width: 100%;">
                         <div>
-                            <h1 class="font"> Product Requirement Documents</h1>
+                            <h1 class="font" style="font-size: clamp(0.5rem, 1.25rem, 2rem);"> PRDs</h1>
                         </div>
                     </div>
                     <div
                         style="box-shadow: 1px 1px 19px -5px; height: fit-content;width: fit-content;border-radius: 5px;">
                         <video width="320" height="240" controls autoplay muted poster="/img/Blinking squares.gif">
                             <source src="/img/PRD.mp4" type="video/mp4">Your browser does not support the video tag.
-                        </video> </div>
+                        </video>
+                    </div>
+
+                </div>
+                <div class="section content-block">
+                    <div style="display: flex;justify-content: flex-start;align-items: center;width: 100%;">
+                        <div>
+                            <h1 class="font" style="font-size: clamp(1rem, 1.25rem, 2rem);">Product Pitches</h1>
+                        </div>
+                    </div>
+                    <div
+                        style="box-shadow: 1px 1px 19px -5px; height: fit-content;width: fit-content;border-radius: 5px;">
+                        <video width="320" height="240" controls autoplay muted poster="/img/Blinking squares.gif">
+                            <source src="/img/SecondBrain_ProductPitch.mp4" type="video/mp4">Your browser does not
+                            support the video tag.
+                        </video>
+                    </div>
 
                 </div>
 
@@ -185,7 +200,8 @@
                             placeholder="Enter your Messaage"></textarea></div>
                     <div style="height: 100%;width: 10%;display: flex;justify-content: center;align-items: center;">
                         <button id="send" style="all: unset;cursor: pointer;"><img src="/img/send message.png"
-                                style="height: 16px;width: 16px;object-fit: contain;"></button> </div>
+                                style="height: 16px;width: 16px;object-fit: contain;"></button>
+                    </div>
 
 
                 </div>
@@ -199,15 +215,15 @@
         </div>
 
     </div>
-      <script>
-    window.addEventListener('load', function () {
-      const loader = document.getElementById('loader');
-      const content = document.getElementById('main-content');
-      loader.style.display = 'none';
-      content.style.display = 'block';
-      document.body.classList.remove('loading');
-    });
-  </script>
+    <script>
+        window.addEventListener('load', function () {
+            const loader = document.getElementById('loader');
+            const content = document.getElementById('main-content');
+            loader.style.display = 'none';
+            content.style.display = 'block';
+            document.body.classList.remove('loading');
+        });
+    </script>
 
     <script src="chat.js"></script>
 

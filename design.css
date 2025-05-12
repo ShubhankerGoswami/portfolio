@@ -1,71 +1,90 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;  /* hides horizontal scrollbar */
-  }
-  * {
-    box-sizing: border-box;
-  }
-
-  .font {
-    font-family: Eudoxussans, sans-serif;
-  }
-
-  html {
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-    font-size: 16px;
-  }
-
-  h1 {
-    font-size: clamp(1rem, 2rem, 3rem); /* Responsive font size */
-  }
-
-  /* Media Query for Smaller Screens */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* hides horizontal scrollbar */
+}
 
 
-.menubutton{
 
-    color: black;
-    transition: background-color 0.3s ease, border-bottom 0.3s ease;
-    cursor: pointer;
-    font-size: 0.85rem;
-    text-decoration: none;  /* Removes underline from the link */
+.navbar{
+
+display: none;
 
 }
 
-.menubutton:hover{
-    color: rgba(128, 0, 128, 1);
-    
-    font-weight: bold;
+
+* {
+  box-sizing: border-box;
+}
+
+.font {
+  font-family: Eudoxussans, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Smooth scrolling for anchor links */
+  font-size: 16px;
+}
+
+h1 {
+  font-size: clamp(1rem, 2rem, 3rem);
+  /* Responsive font size */
+}
+
+/* Media Query for Smaller Screens */
+
+
+.menubutton {
+
+  color: black;
+  transition: background-color 0.3s ease, border-bottom 0.3s ease;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: none;
+  /* Removes underline from the link */
+
+}
+
+.menubutton:hover {
+  color: rgba(128, 0, 128, 1);
+
+  font-weight: bold;
 
 }
 
 .menubutton.active {
-    background-color: purple;  /* Purple for the Home button */
-  }
+  background-color: purple;
+  /* Purple for the Home button */
+}
 
 /* Initial State - off-screen */
 .transitionleft,
 .transitionright {
-    position: relative;
-    opacity: 0;
-    transition: transform 0.8s ease-in-out, opacity 0.3s ease-in-out;
+  position: relative;
+  opacity: 0;
+  transition: transform 0.8s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 /* Position off-screen */
 .transitionleft {
-    transform: translateX(-100%); /* Move to the left */
+  transform: translateX(-100%);
+  /* Move to the left */
 }
 
 .transitionright {
-    transform: translateX(100%); /* Move to the right */
+  transform: translateX(100%);
+  /* Move to the right */
 }
 
 /* Final state when you add a class to trigger the animation */
 .transitionleft.show,
 .transitionright.show {
-    opacity: 1;
-    transform: translateX(0); /* Move to the final position */
+  opacity: 1;
+  transform: translateX(0);
+  /* Move to the final position */
 }
 
 
@@ -84,7 +103,7 @@ html, body {
   max-width: 100%;
 
   display: flex;
-  
+
   justify-content: flex-start;
 
   align-items: center;
@@ -111,7 +130,7 @@ html, body {
   max-width: 100%;
 
   display: flex;
-  
+
   justify-content: flex-start;
 
   align-items: center;
@@ -137,4 +156,70 @@ html, body {
 
 }
 
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Improves iOS scroll */
 
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 0;
+  /* Hide scrollbar for WebKit browsers */
+}
+
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(2rem, 6vw, 3rem);
+  /* Responsive font size */
+  border-bottom: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Optional media query for large screens */
+@media (min-width: 768px) {
+  .section {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+
+  }
+}
+
+
+
+.content-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-direction: column;
+  /* stack on small screens by default */
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .content-block {
+    flex-direction: row;
+    /* side-by-side layout on tablets/desktops */
+  }
+
+  .text-block {
+    width: 400px;
+  }
+
+  .navbar {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+  }
+}
