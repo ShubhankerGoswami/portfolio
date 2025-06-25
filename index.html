@@ -27,7 +27,19 @@
             overflow: hidden;
         }
     </style>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GVHM1EMGR"></script>
+
+  <!-- ✅ You already have this part correctly: -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8GVHM1EMGR');
+  </script>
 </head>
+
+
 
 <body class="loading">
     <div id="loader">
@@ -111,17 +123,19 @@
 
             <div style="width: 100%; display: flex;justify-content: center;">
                 <h1 class="font"
-                    style="font-size: 25px; background: linear-gradient(135deg, purple, black); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    style="font-size: 25px;    background-image: repeating-linear-gradient(45deg, #3c81f6, #9d55ff 20%, #833ab4 40%, #c13584 60%, #e1306c 80%, #fd1d1d) ; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                     Work Samples</h1>
             </div>
 
             <div class="scroll-container">
 
                 <div class="section content-block">
-                    <div style="display: flex;justify-content: flex-start;align-items: center;width: 100%;">
+                    <div style="display: flex;justify-content: flex-start;align-items: center;width: 100%;flex-direction: column;">
                         <div>
                             <h1 class="font" style="font-size: clamp(0.5rem, 1.25rem, 2rem);"> PRDs</h1>
                         </div>
+                        <div><p class="font" style="font-size: clamp(1rem,1.5rem,2rem);">I formulated Product Requirement Documents (PRDs) for both 0-1 and client products, ensuring alignment with stakeholders and the overall product vision to guide development and achieve business goals.</p></div>
+                        <div>Tools Used <span><img src="/img/googledocs.png" style="height: 20px;width: 20px; object-fit: contain;"></span></div>
                     </div>
                     <div
                         style="box-shadow: 1px 1px 19px -5px; height: fit-content;width: fit-content;border-radius: 5px;">
