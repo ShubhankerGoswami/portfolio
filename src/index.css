@@ -50,84 +50,7 @@ body {
 }
 
 
-.messagesdiv {
-
-  display: flex;
-  width: 100%;
-
-
-}
-
-.usermessage {
-
-  max-width: 100%;
-
-  display: flex;
-
-  justify-content: flex-start;
-
-  align-items: center;
-
-  background-color: white;
-
-  color: black;
-
-  font-size: 0.85rem;
-  border-radius: 10px;
-
-  border: 1px solid black;
-
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-
-  padding: 5px;
-
-  line-break: auto;
-
-  word-wrap: break-word;
-
-  line-height: 1.6;
-
-}
-
-
-.bemessage {
-
-  max-width: 100%;
-
-  display: flex;
-
-  justify-content: flex-start;
-
-  align-items: center;
-
-  background-color: purple;
-
-  color: white;
-  font-size: 0.85rem;
-  border-radius: 10px;
-
-  padding: 5px;
-
-  line-break: auto;
-
-  word-wrap: break-word;
-
-  line-height: 1.6;
-
-
-}
-
-
-
-.chatbot {
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
-  z-index: 1000;
-
-  width: 200px;
-  height: 200px;
-}
+/* chatbot styles are scoped inline within ChatBot.jsx */
 
 
 h1, h2, h3, h4, h5, h6 {
@@ -151,9 +74,9 @@ img {
 
 /* ===== Utility Classes ===== */
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
 .text-gradient-primary {
@@ -275,9 +198,9 @@ img {
 }
 
 .nav-container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -695,58 +618,32 @@ img {
 /* ===== Experience Section ===== */
 .timeline {
   position: relative;
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .timeline-line {
   position: absolute;
-  left: 0;
+  left: 7px;
   top: 0;
   bottom: 0;
   width: 1px;
   background: var(--border);
 }
 
-@media (min-width: 768px) {
-  .timeline-line {
-    left: 50%;
-  }
-}
-
 .timeline-item {
   position: relative;
-  padding-left: 2rem;
-  margin-bottom: 4rem;
+  padding-left: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .timeline-item:last-child {
   margin-bottom: 0;
 }
 
-@media (min-width: 768px) {
-  .timeline-item {
-    padding-left: 0;
-    padding-right: 50%;
-  }
-  
-  .timeline-item:nth-child(even) {
-    padding-right: 0;
-    padding-left: 50%;
-  }
-  
-  .timeline-item:nth-child(even) .timeline-content {
-    margin-left: 4rem;
-  }
-  
-  .timeline-item:nth-child(odd) .timeline-content {
-    margin-right: 4rem;
-  }
-}
-
 .timeline-dot {
   position: absolute;
-  left: -6px;
+  left: 0;
   top: 0;
   width: 1rem;
   height: 1rem;
@@ -757,15 +654,9 @@ img {
   z-index: 10;
 }
 
-@media (min-width: 768px) {
-  .timeline-dot {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
 
 .timeline-content {
-  padding: 1.5rem;
+  padding: 2rem;
   transition: border-color 0.3s ease;
 }
 
@@ -831,8 +722,8 @@ img {
 }
 
 .project li {
-  display: flex;
-  gap: 0.5rem;
+  position: relative;
+  padding-left: 1rem;
   font-size: 0.875rem;
   color: var(--muted-foreground);
   line-height: 1.6;
@@ -840,12 +731,13 @@ img {
 
 .project li::before {
   content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
   width: 6px;
   height: 6px;
-  min-width: 6px;
   background: hsla(210, 100%, 56%, 0.6);
   border-radius: 50%;
-  margin-top: 0.5rem;
 }
 
 /* ===== Education Section ===== */
