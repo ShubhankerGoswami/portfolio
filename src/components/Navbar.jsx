@@ -22,6 +22,7 @@ export default function Navbar() {
   const navLinks = [
     { label: 'About',        href: '/#about' },
     { label: 'Projects',     href: '/projects' },
+    { label: 'Resume',       href: '/resume' },
     { label: 'Skills',       href: '/#skills' },
     { label: 'Experience',   href: '/#experience' },
     { label: 'Education',    href: '/#education' },
@@ -52,6 +53,7 @@ export default function Navbar() {
 
   const isActive = (href) => {
     if (href === '/projects') return location.pathname === '/projects'
+    if (href === '/resume') return location.pathname === '/resume'
     return false
   }
 

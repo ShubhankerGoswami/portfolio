@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import ChatBot from './components/ChatBot'
 import Footer from './components/Footer'
 import Projects from './components/Projects'
+import Resume from './components/Resume'
 
 function Home() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/resume" element={<Resume />} />
       </Routes>
       <ChatBot />
       <Footer />
