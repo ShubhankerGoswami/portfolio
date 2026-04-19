@@ -8,6 +8,7 @@ import Education from './components/Education'
 import Achievements from './components/Achievements'
 import Contact from './components/Contact'
 import ChatBot from './components/ChatBot'
+import VoiceAgent from './components/VoiceAgent'
 import Footer from './components/Footer'
 import Projects from './components/Projects'
 import Resume from './components/Resume'
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/resume" element={<Resume />} />
       </Routes>
+      <VoiceAgent />
       <ChatBot />
       <Footer />
     </>
