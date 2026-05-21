@@ -43,6 +43,22 @@ export default function Hero() {
             </svg>
             LinkedIn
           </a>
+          <a
+            href="https://aiwaiter.beingcogni.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+            style={{
+              background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
+              color: '#fff',
+              boxShadow: '0 0 40px -10px rgba(249,115,22,0.5)',
+            }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            Try AIWaiter
+          </a>
         </div>
 
         <div className="hero-contact-info">

@@ -295,13 +295,17 @@ img {
   .nav-links {
     display: flex;
   }
-  
+
   .nav-toggle {
     display: none;
   }
-  
+
   .nav-mobile {
     display: none !important;
+  }
+
+  .nav-aiwaiter-btn {
+    display: inline-flex !important;
   }
 }
 
