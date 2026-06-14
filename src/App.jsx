@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useMatch, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -34,8 +34,7 @@ const BACKEND_BASE = window.location.host.split(':')[0] === 'localhost'
   : 'https://portfoliobackend-q666.onrender.com'
 
 export default function App() {
-  const location = useLocation()
-  const isRecruiterPage = location.pathname.replace(/\/$/, '') === '/recruiter'
+  const isRecruiterPage = !!useMatch('/recruiter')
 
   // Wake up the Render free-tier backend as soon as any page loads.
   // mode:'no-cors' lets the request through even before CORS is fully negotiated;
@@ -52,6 +51,7 @@ export default function App() {
         <Route path="/projects"  element={<Projects />} />
         <Route path="/resume"    element={<Resume />} />
         <Route path="/recruiter" element={<RecruiterPage />} />
+        <Route path="*"          element={<Navigate to="/" replace />} />
       </Routes>
       {!isRecruiterPage && <VoiceAgent />}
       {!isRecruiterPage && <ChatBot />}
