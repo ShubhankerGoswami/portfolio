@@ -28,27 +28,33 @@ export default function PDFViewer({ src = '/img/resume.pdf', highlightTerms = []
           if (cancelled) return
 
           const page = await pdf.getPage(p)
-          // Scale to fit container width minus padding (no horizontal scroll)
-          const naturalVp = page.getViewport({ scale: 1.0 })
+          // Scale to fit container width. Multiply by DPR so canvas pixels map
+          // 1:1 to physical screen pixels — prevents blurry text on retina/mobile.
+          const dpr = window.devicePixelRatio || 1
+          const naturalVp  = page.getViewport({ scale: 1.0 })
           const availWidth = container.clientWidth - 2   // 1px border each side
-          const scale = availWidth / naturalVp.width
-          const vp   = page.getViewport({ scale })
+          const cssScale   = availWidth / naturalVp.width
+          const vp         = page.getViewport({ scale: cssScale * dpr })
+
+          // CSS dimensions (logical pixels) used for layout
+          const cssW = Math.round(vp.width  / dpr)
+          const cssH = Math.round(vp.height / dpr)
 
           // Page wrapper
           const wrap = document.createElement('div')
           wrap.style.cssText = [
             `position:relative`,
-            `width:${vp.width}px`,
-            `height:${vp.height}px`,
+            `width:${cssW}px`,
+            `height:${cssH}px`,
             `margin:0 auto 10px`,
             `box-shadow:0 4px 24px rgba(0,0,0,.5)`,
           ].join(';')
 
-          // Canvas — visible PDF rendering
+          // Canvas — physical pixels for crisp rendering on HiDPI screens
           const canvas    = document.createElement('canvas')
           canvas.width    = vp.width
           canvas.height   = vp.height
-          canvas.style.cssText = 'position:absolute;inset:0;display:block;'
+          canvas.style.cssText = `position:absolute;inset:0;display:block;width:${cssW}px;height:${cssH}px;`
           wrap.appendChild(canvas)
           await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise
 
@@ -58,11 +64,14 @@ export default function PDFViewer({ src = '/img/resume.pdf', highlightTerms = []
           tl.style.cssText = 'position:absolute;inset:0;overflow:hidden;'
           wrap.appendChild(tl)
 
-          const tc   = await page.getTextContent()
-          const task = pdfjsLib.renderTextLayer({
+          // Text layer uses the CSS-scale viewport (not DPR-scaled) so span
+          // positions align with the visually scaled canvas.
+          const cssVp = page.getViewport({ scale: cssScale })
+          const tc    = await page.getTextContent()
+          const task  = pdfjsLib.renderTextLayer({
             textContent : tc,
             container   : tl,
-            viewport    : vp,
+            viewport    : cssVp,
             textDivs    : [],
           })
           await (task.promise ?? task)   // 3.x returns { promise }, 4.x may differ
