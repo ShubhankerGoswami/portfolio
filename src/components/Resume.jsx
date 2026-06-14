@@ -12,10 +12,72 @@ export default function Resume() {
           from { opacity: 0; transform: translateY(16px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        @keyframes orbPulse {
+          0%, 100% { box-shadow: 0 0 0 0 hsla(270,80%,60%,0.5), 0 0 20px hsla(270,80%,55%,0.3); }
+          50%       { box-shadow: 0 0 0 10px hsla(270,80%,60%,0), 0 0 32px hsla(270,80%,55%,0.5); }
+        }
+        @keyframes waveBar {
+          0%, 100% { transform: scaleY(0.4); }
+          50%       { transform: scaleY(1); }
+        }
         .resume-action-btn:hover {
           background: hsla(210,100%,56%,0.18) !important;
           border-color: hsl(210,100%,56%) !important;
           color: hsl(210,100%,72%) !important;
+        }
+        .resume-recruiter-card {
+          display: flex; align-items: center; gap: 20px;
+          max-width: 900px; margin: 0 auto 2rem;
+          padding: 18px 24px;
+          border-radius: 16px;
+          background: hsla(270,40%,10%,0.7);
+          border: 1px solid hsla(270,60%,45%,0.35);
+          box-shadow: 0 0 40px -10px hsla(270,80%,55%,0.18);
+          backdrop-filter: blur(12px);
+          text-decoration: none;
+          transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        .resume-recruiter-card:hover {
+          border-color: hsla(270,70%,60%,0.6);
+          box-shadow: 0 0 56px -8px hsla(270,80%,55%,0.32);
+          transform: translateY(-2px);
+        }
+        .resume-recruiter-orb {
+          flex-shrink: 0;
+          width: 52px; height: 52px; border-radius: 50%;
+          background: linear-gradient(135deg, hsl(270,80%,38%) 0%, hsl(210,100%,45%) 100%);
+          display: flex; align-items: center; justify-content: center;
+          animation: orbPulse 2.4s ease-in-out infinite;
+        }
+        .resume-recruiter-wave {
+          display: flex; align-items: center; gap: 3px;
+        }
+        .resume-recruiter-wave span {
+          display: block; width: 3px; border-radius: 2px;
+          background: rgba(255,255,255,0.85);
+          transform-origin: bottom;
+        }
+        .resume-recruiter-wave span:nth-child(1) { height: 10px; animation: waveBar 1.1s ease-in-out infinite 0s; }
+        .resume-recruiter-wave span:nth-child(2) { height: 18px; animation: waveBar 1.1s ease-in-out infinite 0.18s; }
+        .resume-recruiter-wave span:nth-child(3) { height: 24px; animation: waveBar 1.1s ease-in-out infinite 0.36s; }
+        .resume-recruiter-wave span:nth-child(4) { height: 18px; animation: waveBar 1.1s ease-in-out infinite 0.54s; }
+        .resume-recruiter-wave span:nth-child(5) { height: 10px; animation: waveBar 1.1s ease-in-out infinite 0.72s; }
+        .resume-recruiter-cta {
+          flex-shrink: 0;
+          display: inline-flex; align-items: center; gap: 6px;
+          padding: 8px 18px; border-radius: 9px;
+          background: linear-gradient(135deg, hsl(270,80%,52%) 0%, hsl(210,100%,56%) 100%);
+          color: #fff; font-size: 0.8rem; font-weight: 700;
+          font-family: Inter, sans-serif; white-space: nowrap;
+          box-shadow: 0 4px 18px hsla(270,80%,55%,0.35);
+          transition: filter 0.18s, transform 0.18s;
+        }
+        .resume-recruiter-card:hover .resume-recruiter-cta {
+          filter: brightness(1.12); transform: translateX(2px);
+        }
+        @media (max-width: 600px) {
+          .resume-recruiter-card { flex-wrap: wrap; gap: 14px; }
+          .resume-recruiter-cta { width: 100%; justify-content: center; }
         }
       `}</style>
 
@@ -130,6 +192,37 @@ export default function Resume() {
             </a>
           </div>
         </div>
+      </section>
+
+      {/* Recruiter CTA */}
+      <section style={{ padding: '0 1rem' }}>
+        <a href="/recruiter" className="resume-recruiter-card">
+          <div className="resume-recruiter-orb">
+            <div className="resume-recruiter-wave">
+              <span /><span /><span /><span /><span />
+            </div>
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{
+              fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700,
+              fontSize: '1rem', color: 'hsl(210,40%,94%)', marginBottom: 4,
+            }}>
+              Are you a recruiter?
+            </div>
+            <div style={{
+              fontFamily: 'Inter, sans-serif', fontSize: '0.8rem',
+              color: 'hsl(270,30%,65%)', lineHeight: 1.5,
+            }}>
+              Skip the reading — talk to Cogni, my AI voice agent, and ask anything about my experience, skills, or availability.
+            </div>
+          </div>
+          <div className="resume-recruiter-cta">
+            Talk to Cogni
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
       </section>
 
       {/* PDF viewer */}
