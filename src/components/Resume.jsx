@@ -1,3 +1,5 @@
+import PDFViewer from './PDFViewer'
+
 export default function Resume() {
   return (
     <>
@@ -14,13 +16,6 @@ export default function Resume() {
           background: hsla(210,100%,56%,0.18) !important;
           border-color: hsl(210,100%,56%) !important;
           color: hsl(210,100%,72%) !important;
-        }
-        .resume-pdf-frame {
-          width: 100%;
-          height: 1300px;
-          border: none;
-          display: block;
-          border-radius: 12px;
         }
       `}</style>
 
@@ -149,12 +144,9 @@ export default function Resume() {
             border: '1px solid hsl(222,30%,18%)',
             boxShadow: '0 8px 48px -8px hsla(210,100%,56%,0.2), 0 4px 24px -4px hsla(0,0%,0%,0.4)',
             background: 'hsl(222,47%,9%)',
+            minHeight: 600,
           }}>
-            <iframe
-              className="resume-pdf-frame"
-              src="/img/resume.pdf"
-              title="Shubhanker Goswami Resume"
-            />
+            <PDFViewer src="/img/resume.pdf" />
           </div>
 
           <p style={{
