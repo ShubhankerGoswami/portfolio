@@ -35,7 +35,7 @@ const BACKEND_BASE = window.location.host.split(':')[0] === 'localhost'
 
 export default function App() {
   const location = useLocation()
-  const isRecruiterPage = location.pathname === '/recruiter'
+  const isRecruiterPage = location.pathname.replace(/\/$/, '') === '/recruiter'
 
   // Wake up the Render free-tier backend as soon as any page loads.
   // mode:'no-cors' lets the request through even before CORS is fully negotiated;
