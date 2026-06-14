@@ -84,6 +84,22 @@ function BotTextWithLink({ text }) {
   )
 }
 
+// ── Suggestion helpers ────────────────────────────────────────────────────────
+const SUGGESTIONS_RE_VA = /%%SUGGESTIONS%%([\s\S]*?)(?:%%END_SUGGESTIONS%%|$)/
+
+function parseSuggestionsVA(text) {
+  if (!text) return []
+  const m = text.match(SUGGESTIONS_RE_VA)
+  if (!m) return []
+  return m[1].trim().split(/\r?\n/)
+    .map(l => l.trim().replace(/^\[|\]$/g, '').trim())
+    .filter(Boolean)
+}
+
+function stripBlocksVA(text) {
+  return text.replace(/%%\w+%%[\s\S]*/g, '').trim()
+}
+
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function VoiceAgent() {
   const [isOpen,    setIsOpen]    = useState(false)
@@ -101,6 +117,7 @@ export default function VoiceAgent() {
   const reconnectTimerRef = useRef(null)
   const attemptsRef       = useRef(0)
   const isOpenRef         = useRef(false)
+  const discardInFlightRef = useRef(false)  // true after chip click until new transcript arrives
 
   useEffect(() => { isOpenRef.current = isOpen }, [isOpen])
 
@@ -157,14 +174,20 @@ export default function VoiceAgent() {
     ws.onmessage = (e) => {
       // binary frame = ElevenLabs mp3 audio
       if (e.data instanceof ArrayBuffer) {
+        if (discardInFlightRef.current) return  // stale audio from previous response
         playAudioBuffer(e.data)
         return
       }
       // text frame = JSON control message
       try {
         const msg = JSON.parse(e.data)
-        if (msg.type === 'transcript')    { setUserText(msg.text); setBotText('') }
-        if (msg.type === 'response_text') setBotText(msg.text)
+        if (msg.type === 'transcript') {
+          discardInFlightRef.current = false  // new response starting — accept audio again
+          setUserText(msg.text); setBotText('')
+        }
+        if (msg.type === 'response_text') {
+          if (!discardInFlightRef.current) setBotText(msg.text)
+        }
         if (msg.type === 'error')         { setErrMsg(msg.message); setPhase('idle') }
         if (msg.type === 'pong')          console.debug('[VoiceAgent] pong')
       } catch {
@@ -280,6 +303,17 @@ export default function VoiceAgent() {
     if      (phase === 'idle')      startRecording()
     else if (phase === 'listening') stopRecording()
     else if (phase === 'speaking')  { stopAudio(); setPhase('idle') }
+  }
+
+  // ── Text query (used by suggestion chips) ────────────────────────────────
+  const sendTextQuery = (text) => {
+    if (!text.trim() || socketRef.current?.readyState !== WebSocket.OPEN) return
+    stopAudio()   // interrupt any in-progress audio before starting new query
+    discardInFlightRef.current = true  // ignore stale audio/text from old response
+    setUserText(text)
+    setBotText('')
+    setPhase('processing')
+    socketRef.current.send(JSON.stringify({ type: 'text_query', text }))
   }
 
   // ── Derived display ───────────────────────────────────────────────────────
@@ -519,7 +553,10 @@ export default function VoiceAgent() {
                     {userText}
                   </div>
                 )}
-                {botText && (
+                {botText && (() => {
+                  const chips = phase === 'idle' || phase === 'speaking'
+                    ? parseSuggestionsVA(botText) : []
+                  return (<>
                   <div style={{
                     background: 'linear-gradient(135deg, hsla(270,60%,15%,0.8), hsla(180,60%,10%,0.6))',
                     border: '1px solid hsla(270,50%,30%,0.4)',
@@ -532,9 +569,28 @@ export default function VoiceAgent() {
                       display: 'block', marginBottom: 3,
                       textTransform: 'uppercase', letterSpacing: '0.05em',
                     }}>Cogni</span>
-                    <BotTextWithLink text={botText} />
+                    <BotTextWithLink text={stripBlocksVA(botText)} />
                   </div>
-                )}
+                  {chips.length > 0 && (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 7 }}>
+                      {chips.map((s, i) => (
+                        <button key={i}
+                          disabled={connState !== 'connected'}
+                          onClick={() => sendTextQuery(s)}
+                          style={{
+                            background: 'hsla(270,60%,20%,0.7)',
+                            border: '1px solid hsla(270,50%,40%,0.5)',
+                            borderRadius: 20, padding: '5px 11px',
+                            color: 'hsl(270,70%,80%)', fontSize: '0.68rem',
+                            fontFamily: 'Inter, sans-serif', cursor: 'pointer',
+                            lineHeight: 1.3, transition: 'background .15s',
+                          }}
+                        >{s}</button>
+                      ))}
+                    </div>
+                  )}
+                  </>)
+                })()}
               </div>
             )}
           </div>
