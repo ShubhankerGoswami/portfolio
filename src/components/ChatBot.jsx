@@ -108,6 +108,17 @@ export default function ChatBot() {
     socketRef.current = null
   }, [])
 
+  useEffect(() => {
+    const handler = () => {
+      setPopupVisible(false)
+      setChatOpen(true)
+      sessionStorage.setItem(STORAGE_KEY, 'true')
+      openSocket()
+    }
+    window.addEventListener('openChatbot', handler)
+    return () => window.removeEventListener('openChatbot', handler)
+  }, [openSocket])
+
   const handleStartChat = () => {
     setPopupVisible(false)
     setChatOpen(true)

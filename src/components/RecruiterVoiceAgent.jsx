@@ -465,10 +465,10 @@ function Waveform({ active, phase }) {
 
 // ── Quick suggestion chips ────────────────────────────────────────────────────
 const SUGGESTIONS = [
-  'What makes him stand out?',
-  'Tell me about his AI work',
-  'Key achievements?',
-  'What teams has he led?',
+  "What's his strongest PM achievement?",
+  'How does he approach AI product strategy?',
+  'Which roles is he best suited for?',
+  'How technical is he really?',
 ]
 
 // ── Phase / conn maps ─────────────────────────────────────────────────────────
